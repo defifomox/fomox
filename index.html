@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>DeFi FomoX</title>
+
+    <link href="./assets/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <link href="./assets/css/skin.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./assets/js/jquery-1.9.1.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/timeTo.css">
+    <script src="./assets/js/TronWeb.js"></script>
+    <script src="./assets/js/math.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/jquery.time-to.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/jquery.query.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+    <div class="app hall">
+
+        <!--头部-->
+        <div class="header">
+            <div class="left">
+
+                <span>loading</span>
+            </div>
+            <div class="right">
+                <div class="price">
+                    <img src="./assets/images/tron.svg" style="width:20px;" /><strong>loading</strong>
+                </div>
+
+            </div>
+        </div>
+
+        <!--内容区域-->
+        <div class="content">
+
+            <!--<button onclick="onOpenLoading()">loading</button>-->
+            <!--<button onclick="onOpenNotice()">公告</button>
+
+            <button onclick="onOpenTips()">tips</button>-->
+
+            <div class="user-info">
+                <div class="pie-title">
+                    <img src="./assets/images/logo-name.png" />
+                </div>
+                <div class="pie-box">
+                    <div class="left">
+                        <img src="./assets/images/c.png" />
+                    </div>
+                    <div class="right">
+                        规则:每次认购金额递增1%。认购金额分配: 30%进入大奖池,45%给之前购买的玩家分红,10%给推荐人,10%平台收取,每次有人接龙认购,倒计时重新开始,倒计时完成后最后购买者独得奖池!
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="game">
+                <!--<div class="tag">热门精选</div>-->
+                <div class="title">loading</div>
+                <div class="tips">参与人次:<span class="join_member"></span> |  历史分红:<span class="total_bonus"></span> </div>
+                <div class="info">
+                    <div class="left">
+                        <div class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="prize_value">loading</span></div>
+                        <div>奖池金额</div>
+                    </div>
+                    <div class="right">
+                        <div class="time"><i class="iconfont icon-clock"></i><div class="game_timer"></div></div>
+                        <div>倒计时</div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <progress value='80' max='100'></progress><span>80%</span>
+                </div>
+                <div class="last-user">最后购买玩家:Tex***t01  2020-09-14 23:11:23</div>
+
+                <div class="btn">
+                    <span onclick="BuyToken()">夺取大奖<img src="./assets/images/tron_btn.svg"  style="width:22px;vertical-align:middle;" /><strong class="btn_price"></strong></span>
+                </div>
+                <div class="more"></div>
+            </div>
+
+
+            <!--个人信息-->
+            <div class="user-info">
+                <div class="title">
+                    <img src="./assets/images/title-icon.png" />
+                    <span>个人收益</span>
+                </div>
+
+                <div class="list-box">
+
+                    <div class="list-item">
+                        <p>持有份额</p>
+                        <p class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="user_have_count">loading</span></p>
+                    </div>
+                    <div class="list-item">
+                        <p>投入金额</p>
+                        <p class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="user_income_value">loading</span></p>
+                    </div>
+
+                    <div class="list-item">
+                        <p>分红收益</p>
+                        <p class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="user_investment_value">loading</span></p>
+                    </div>
+                    <div class="list-item">
+                        <p>推荐收益</p>
+                        <p class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="user_recommend_value">loading</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <!--loading-->
+    <div class="mask bg_4" id="loading" style="display:none;">
+        <div class="loading">
+            <div class="loading_bar"></div>
+        </div>
+    </div>
+
+
+    <!--notice-->
+    <div class="mask bg_5" id="notice" style="display:none;">
+        <div class="notice-box">
+            <div class="notice-box-content">
+                <div class="notice-box-content-tit">公 告</div>
+                <div class="notice-box-content-box">
+                    <p>请注意，本平台依托于<a href="https://tron.network/" target="_blank">Tron(波场)</a>，只要购买即可后续持续获得收益。<br />
+                    在这里，呈现在眼前的，是一个去中心化，依托Tron(波场)智能合约的分布式应用。在阳光下，一切交易行为均有据可查。<br />
+                    <a id="notice_contract_address" href="#" target="_blank" style="text-decoration: underline">波场合约地址</a><br/>
+                   推荐朋友来投资，可获得这笔投资额外的收益分成。</p>
+                </div>
+            </div>
+        </div>
+        <div class="notice-box-bottom">
+            <div class="notice-box-close" onclick="$('#notice').hide()">
+                <i class="iconfont icon-reeor" style="font-size:50px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!--tip-->
+    <div class="lh-tip-panel" id="tip" style="display:none;">
+        <div class="lh-tip-box lt-success">
+            <i class="iconfont icon-success"></i>
+            <span class="lt-msg">提交成功</span>
+        </div>
+    </div>
+
+    <script>
+
+        var contract = null;
+        var state = {
+            address: null,
+            balance: null,
+            contract: null,
+            tokenBalance: null,
+            decimals: 6,
+            price: 0,
+            game_info: {}
+        };
+        var recommend_user = $.query.get('p');
+        if (!recommend_user || recommend_user == "") {
+            recommend_user = "TJBHq5um63GPdmmjhmSppuep69bygK7cJE";
+        }
+        var artifact = {};
+        function BuyToken() {
+            state.address && contract.buy_token(recommend_user).send({
+                feeLimit: 100000000,
+                callValue: state.price,
+                shouldPollResponse: true
+            }).then(output => {
+                WriteLog("购买响应:" + JSON.stringify(output));
+                if (output.success) { InitPage(); } else {
+                    alert("Please refresh the page and try again")
+                }
+            });
+        }
+        function InitPage() {
+            $("#loading").show();
+
+            tronWeb.trx.getBalance(state.address).then(function (Balance) {
+                var Balance_format = math.chain(Balance).divide(math.pow(10, 6)).done();
+
+                $(".header .right strong").html(Balance_format);
+            });
+
+
+
+            state.address && contract.getBuerIncomeInvestment(state.address).call().then(output => {
+                var user_have_count = tronWeb.toDecimal(output.buy_count);
+                var investment = math.chain(tronWeb.toDecimal(output.investment)).divide(math.pow(10, 6)).done();
+                var recommend_value = math.chain(tronWeb.toDecimal(output.recommend_value)).divide(math.pow(10, 6)).done();
+                var income = math.chain(tronWeb.toDecimal(output.income)).divide(math.pow(10, 6)).done();
+                $(".user-info .list-item span.user_have_count").html(user_have_count);
+                $(".user-info .list-item span.user_income_value").html(income);
+                $(".user-info .list-item span.user_investment_value").html(investment);
+                $(".user-info .list-item span.user_recommend_value").html(recommend_value);
+                WriteLog("当前用户持有:" + JSON.stringify(output));
+            });
+
+            state.address && contract.askprice().call().then(output => {
+                state.price = tronWeb.toDecimal(output.price);
+                WriteLog("当前价格:" + (state.price / (Math.pow(10, state.decimals))) + "RTX");
+            });
+            $("#loading").hide();
+            GetGameRoundInfo();
+        }
+        $(function () {
+            $("#loading").show();
+
+            $.get("./assets/SingleTokenGame.json", function (data) {
+
+                artifact = data;
+
+                waitForGlobal(function () {
+
+                    window.tronWeb.setDefaultBlock('latest');
+                    let tronWeb = window.tronWeb;
+
+                    state.address = tronWeb.defaultAddress.base58;
+                    WriteLog("当前用户地址:" + state.address);
+                    let contract_address = tronWeb.address.fromHex(artifact.networks['*'].address);
+                    WriteLog("合约地址:" + contract_address);
+                    jQuery("#notice_contract_address").attr("href", "https://nile.tronscan.org/#/contract/" + contract_address);
+                    if (!localStorage.getItem("seenWarning1")) {
+                        // Start phishing warning on load
+                        jQuery("#notice").show()
+
+                        localStorage.setItem("seenWarning1", true)
+                    }
+                    var show_msg = state.address.substring(0, 7) + "..." + state.address.substring(state.address.length - 4);
+                    //当前用户地址
+                    $(".header .left span").html(show_msg);
+
+                    contract = tronWeb.contract(artifact.abi, contract_address);
+
+                    InitPage();
+
+                });
+            });
+
+        });
+
+        function WriteLog(msg) {
+            console.log(msg);
+        }
+
+        function BindPage(output) {
+            //游戏名称
+            $(".game .title").html(output.name);
+            //最后购买用户+最后购买时间
+            var show_msg = "还没有人购买";
+            if (tronWeb.isAddress(output.last_buy_user_address)) {
+                var last_buy_user_address = tronWeb.address.fromHex(output.last_buy_user_address);
+
+
+                show_msg = last_buy_user_address.substring(0, 7) + "..." + last_buy_user_address.substring(last_buy_user_address.length - 4);
+            }
+            var game_times = tronWeb.toDecimal(output.game_times);
+            var over_time = tronWeb.toDecimal(output.over_time) * 1000;
+            var current_time = (new Date()).getTime();
+
+            var left_seconds = parseInt(math.chain(over_time).subtract(current_time).divide(1000).done());
+            $(".game .progress progress").attr("value", left_seconds);
+            $(".game .progress progress").attr("max", game_times);
+            $(".game .progress span").html((left_seconds * 100 / game_times).toFixed(2) + "%");
+
+            $(".game .game_timer").timeTo({
+                seconds: left_seconds,
+                displayHours: true,
+                start: current_time < over_time,
+                callback: function () {
+                    GetGameRoundInfo();
+                }
+            });
+            var prize_value = math.chain(tronWeb.toDecimal(output.prize_value)).divide(math.pow(10, 6)).done();
+            $(".game .prize_value").html(prize_value);
+            var buy_count = tronWeb.toDecimal(output.buy_count);
+            $(".game .tips .join_member").html(buy_count);
+            var bonus_value = math.chain(tronWeb.toDecimal(output.bonus_value)).divide(math.pow(10, 6)).done();
+            $(".game .tips .total_bonus").html(bonus_value);
+            var last_info = show_msg + " | " + new Date(tronWeb.toDecimal(output.last_buy_time) * 1000);
+            $(".game .last-user").html(last_info);
+            var price = math.chain(tronWeb.toDecimal(output.price)).divide(math.pow(10, 6));
+            $("div.btn span strong.btn_price").html(price + "RTX");
+        }
+        function GetGameRoundInfo() {
+            let tronWeb = window.tronWeb;
+            state.address && contract.getCurrentRoundInfo().call().then(output => {
+                WriteLog("当前游戏信息:" + JSON.stringify(output));
+                BindPage(output);
+            });
+            state.address && contract.getDecimals().call().then(output => {
+                state.decimals = tronWeb.toDecimal(output);
+                WriteLog("货币精度:" + tronWeb.toDecimal(output));
+            });
+        }
+        var waitForGlobal = async (call_back) => {
+            // 1. check variable, 检查tronweb是否已经加载
+            if (window.tronWeb) {
+
+                let tronWeb = window.tronWeb;
+                //tronWeb.setFullNode("https://api.nileex.io/");
+                //tronWeb.setEventServer("https://event.nileex.io/");
+                //tronWeb.setHeader({ "TRON-PRO-API-KEY": 'your api key' });
+                // 2. check node connection，检查所需要的API是否都可以连通
+                //const nodes = await tronWeb.isConnected();
+                //const connected = !Object.entries(nodes).map(([name, connected]) => {
+                //    if (!connected) {
+                //        console.error(`Error: ${name} is not connected`);
+                //    }
+                //    return connected;
+                //}).includes(false);
+                //if (connected) {
+                call_back()
+                //} else {
+                //    console.error(`Error: TRON node is not connected`);
+                //    console.error('wait for tronLink');
+                //    setTimeout(async () => {
+                //        await waitForGlobal(call_back);
+                //    }, 100);
+                //}
+
+            } else {
+                // 如果检测到没有注入tronWeb对象，则等待100ms后重新检测
+                console.error('wait for tronLink');
+                setTimeout(async () => {
+                    await waitForGlobal(call_back);
+                }, 100);
+            }
+        };
+    </script>
+
+</body>
+
+</html>
