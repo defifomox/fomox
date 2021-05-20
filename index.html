@@ -62,7 +62,7 @@
 
             <div class="game">
                 <!--<div class="tag">热门精选</div>-->
-                <div class="title">loading</div>
+                <div class="title"><a href="#">loading</a></div>
                 <div class="tips">参与人次:<span class="join_member"></span> |  历史分红:<span class="total_bonus"></span> </div>
                 <div class="info">
                     <div class="left">
@@ -233,7 +233,11 @@
                     WriteLog("当前用户地址:" + state.address);
                     let contract_address = tronWeb.address.fromHex(artifact.networks['*'].address);
                     WriteLog("合约地址:" + contract_address);
-                    jQuery("#notice_contract_address").attr("href", "https://nile.tronscan.org/#/contract/" + contract_address);
+                    var contract_url="https://nile.tronscan.org/#/contract/" + contract_address;
+                    jQuery("#notice_contract_address").attr("href", contract_url);
+
+                                //游戏名称
+                    $(".game .title a").attr("href",contract_url);
                     if (!localStorage.getItem("seenWarning1")) {
                         // Start phishing warning on load
                         jQuery("#notice").show()
@@ -259,7 +263,7 @@
 
         function BindPage(output) {
             //游戏名称
-            $(".game .title").html(output.name);
+            $(".game .title a").html(output.name);
             //最后购买用户+最后购买时间
             var show_msg = "还没有人购买";
             if (tronWeb.isAddress(output.last_buy_user_address)) {
