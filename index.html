@@ -222,6 +222,16 @@
                 $(".user-info .list-item span.user_income_value").html(income);
                 $(".user-info .list-item span.user_investment_value").html(investment);
                 $(".user-info .list-item span.user_recommend_value").html(recommend_value);
+
+
+
+                if (user_have_count > 0) {
+
+                    var link_str = window.location.origin + window.location.pathname + "?p=" + state.address;
+                    $("#recommond_link p a").html(link_str);
+                    $("#recommond_link p a").attr("href", link_str);
+                    $("#recommond_link").show();
+                }
                 WriteLog("当前用户持有:" + JSON.stringify(output));
             });
 
@@ -325,13 +335,6 @@
             var price = math.chain(tronWeb.toDecimal(output.price)).divide(math.pow(10, 6));
             $("div.btn span strong.btn_price").html(price + "RTX");
 
-            if (buy_count> 0) {
-
-                var link_str = window.location.origin + window.location.pathname + "?p="+state.address;
-                $("#recommond_link p a").html(link_str);
-                $("#recommond_link p a").attr("href", link_str);
-                $("#recommond_link").show();
-            }
             
 
         }
