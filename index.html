@@ -78,10 +78,10 @@
                 <div class="progress">
                     <progress value='80' max='100'></progress><span>80%</span>
                 </div>
-                <div class="last-user">最后购买玩家:Tex***t01  2020-09-14 23:11:23</div>
+                <div class="last-user">loading</div>
 
                 <div class="btn">
-                    <span onclick="BuyToken()">夺取大奖<img src="./assets/images/tron_btn.svg"  style="width:22px;vertical-align:middle;" /><strong class="btn_price"></strong></span>
+                    <span onclick="BuyToken()">夺取大奖<img src="./assets/images/tron_btn.svg" style="width:22px;vertical-align:middle;" /><strong class="btn_price"></strong></span>
                 </div>
                 <div class="more"></div>
             </div>
@@ -113,6 +113,11 @@
                         <p>推荐收益</p>
                         <p class="price"><img src="./assets/images/tron.svg" style="width:22px;" /><span class="user_recommend_value">loading</span></p>
                     </div>
+
+                    <div class="list-item" style="width:100%; display:none;" id="recommond_link" >
+                        <p>推广链接</p>
+                        <p class="price"><a href="#"></a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,10 +142,12 @@
             <div class="notice-box-content">
                 <div class="notice-box-content-tit">公 告</div>
                 <div class="notice-box-content-box">
-                    <p>请注意，本平台依托于<a href="https://tron.network/" target="_blank">Tron(波场)</a>，只要购买即可后续持续获得收益。<br />
-                    在这里，呈现在眼前的，是一个去中心化，依托Tron(波场)智能合约的分布式应用。在阳光下，一切交易行为均有据可查。<br />
-                    <a id="notice_contract_address" href="#" target="_blank" style="text-decoration: underline">波场合约地址</a><br/>
-                   推荐朋友来投资，可获得这笔投资额外的收益分成。</p>
+                    <p>
+                        请注意，本平台依托于<a href="https://tron.network/" target="_blank">Tron(波场)</a>，只要购买即可后续持续获得收益。<br />
+                        在这里，呈现在眼前的，是一个去中心化，依托Tron(波场)智能合约的分布式应用。在阳光下，一切交易行为均有据可查。<br />
+                        <a id="notice_contract_address" href="#" target="_blank" style="text-decoration: underline">波场合约地址</a><br />
+                        推荐朋友来投资，可获得这笔投资额外的收益分成。
+                    </p>
                 </div>
             </div>
         </div>
@@ -171,15 +178,22 @@
             price: 0,
             game_info: {}
         };
-        var recommend_user = $.query.get('p');
-        if (!recommend_user || recommend_user == "") {
-            recommend_user = "TJBHq5um63GPdmmjhmSppuep69bygK7cJE";
-        }
+
         var artifact = {};
         function BuyToken() {
+
+            var recommend_user = $.query.get('p');
+            if (!recommend_user || recommend_user == "") {
+                recommend_user = "TJBHq5um63GPdmmjhmSppuep69bygK7cJE";
+            }
+            if (!tronWeb.isAddress(recommend_user)) {
+                recommend_user = "TJBHq5um63GPdmmjhmSppuep69bygK7cJE";
+            }
             state.address && contract.buy_token(recommend_user).send({
                 feeLimit: 100000000,
-                callValue: state.price,
+                callValue: 0,// state.price,
+                //tokenID: "TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL",
+                //tokenValue: 1,
                 shouldPollResponse: true
             }).then(output => {
                 WriteLog("购买响应:" + JSON.stringify(output));
@@ -231,21 +245,26 @@
                     let tronWeb = window.tronWeb;
 
                     state.address = tronWeb.defaultAddress.base58;
+                    if (state.address.toString().length < 32) {
+                        window.location.reload();
+                    }
                     WriteLog("当前用户地址:" + state.address);
                     let contract_address = tronWeb.address.fromHex(artifact.networks['*'].address);
                     WriteLog("合约地址:" + contract_address);
-                    var contract_url="https://nile.tronscan.org/#/contract/" + contract_address;
+                    var contract_url = "https://nile.tronscan.org/#/contract/" + contract_address;
                     jQuery("#notice_contract_address").attr("href", contract_url);
 
-                     //游戏名称
-                    $(".game .title a").attr("href",contract_url);
+                    //游戏名称
+                    $(".game .title a").attr("href", contract_url);
                     if (!localStorage.getItem("seenWarning1")) {
                         // Start phishing warning on load
                         jQuery("#notice").show()
 
                         localStorage.setItem("seenWarning1", true)
                     }
-                    var show_msg = state.address.substring(0, 7) + "..." + state.address.substring(state.address.length - 4);
+                    var my_address_link = "https://nile.tronscan.org/#/address/" + state.address;
+
+                    var show_msg = '<a href="' + my_address_link + '" target="_blank">' + state.address.substring(0, 7) + "..." + state.address.substring(state.address.length - 4) + '</a>';
                     //当前用户地址
                     $(".header .left span").html(show_msg);
 
@@ -262,6 +281,9 @@
             console.log(msg);
         }
 
+
+
+
         function BindPage(output) {
             //游戏名称
             $(".game .title a").html(output.name);
@@ -271,7 +293,9 @@
                 var last_buy_user_address = tronWeb.address.fromHex(output.last_buy_user_address);
 
 
-                show_msg = last_buy_user_address.substring(0, 7) + "..." + last_buy_user_address.substring(last_buy_user_address.length - 4);
+                var address_link = "https://nile.tronscan.org/#/address/" + last_buy_user_address;
+
+                show_msg = '<a href="' + address_link + '" target="_blank">' + last_buy_user_address.substring(0, 7) + "..." + last_buy_user_address.substring(last_buy_user_address.length - 4) + "</a>";
             }
             var game_times = tronWeb.toDecimal(output.game_times);
             var over_time = tronWeb.toDecimal(output.over_time) * 1000;
@@ -300,6 +324,16 @@
             $(".game .last-user").html(last_info);
             var price = math.chain(tronWeb.toDecimal(output.price)).divide(math.pow(10, 6));
             $("div.btn span strong.btn_price").html(price + "RTX");
+
+            if (output.buy_count > 0) {
+
+                var link_str = window.location.origin + window.location.pathname + "?p="+state.address;
+                $("#recommond_link p a").html(link_str);
+                $("#recommond_link p a").attr("href", link_str);
+                $("#recommond_link").show();
+            }
+            
+
         }
         function GetGameRoundInfo() {
             let tronWeb = window.tronWeb;
@@ -317,8 +351,6 @@
             if (window.tronWeb) {
 
                 let tronWeb = window.tronWeb;
-                //tronWeb.setFullNode("https://api.nileex.io/");
-                //tronWeb.setEventServer("https://event.nileex.io/");
                 //tronWeb.setHeader({ "TRON-PRO-API-KEY": 'your api key' });
                 // 2. check node connection，检查所需要的API是否都可以连通
                 //const nodes = await tronWeb.isConnected();
