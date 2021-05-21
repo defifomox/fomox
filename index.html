@@ -191,7 +191,7 @@
             }
             state.address && contract.buy_token(recommend_user).send({
                 feeLimit: 100000000,
-                callValue: 0,// state.price,
+                callValue:  state.price,
                 //tokenID: "TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL",
                 //tokenValue: 1,
                 shouldPollResponse: true
