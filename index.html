@@ -325,7 +325,7 @@
             var price = math.chain(tronWeb.toDecimal(output.price)).divide(math.pow(10, 6));
             $("div.btn span strong.btn_price").html(price + "RTX");
 
-            if (output.buy_count > 0) {
+            if (buy_count> 0) {
 
                 var link_str = window.location.origin + window.location.pathname + "?p="+state.address;
                 $("#recommond_link p a").html(link_str);
