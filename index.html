@@ -44,20 +44,7 @@
 
             <button onclick="onOpenTips()">tips</button>-->
 
-            <div class="user-info">
-                <div class="pie-title">
-                    <img src="./assets/images/logo-name.png" />
-                </div>
-                <div class="pie-box">
-                    <div class="left">
-                        <img src="./assets/images/c.png" />
-                    </div>
-                    <div class="right">
-                        规则:每次认购金额递增1%。认购金额分配: 30%进入大奖池,45%给之前购买的玩家分红,10%给推荐人,10%平台收取,每次有人接龙认购,倒计时重新开始,倒计时完成后最后购买者独得奖池!
-                    </div>
-                </div>
-
-            </div>
+       
 
 
 
@@ -119,6 +106,21 @@
                         <p class="price"><a href="#"></a></p>
                     </div>
                 </div>
+            </div>
+
+            <div class="user-info">
+                <div class="pie-title">
+                    <img src="./assets/images/logo-name.png" />
+                </div>
+                <div class="pie-box">
+                    <div class="left">
+                        <img src="./assets/images/c.png" />
+                    </div>
+                    <div class="right">
+                        规则:每次认购金额递增1%。认购金额分配: 30%进入大奖池,45%给之前购买的玩家分红,10%给推荐人,10%平台收取,每次有人接龙认购,倒计时重新开始,倒计时完成后最后购买者独得奖池!
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -237,7 +239,7 @@
 
             state.address && contract.askprice().call().then(output => {
                 state.price = tronWeb.toDecimal(output.price);
-                WriteLog("当前价格:" + (state.price / (Math.pow(10, state.decimals))) + "RTX");
+                WriteLog("当前价格:" + (state.price / (Math.pow(10, state.decimals))) + "TRX");
             });
             $("#loading").hide();
             GetGameRoundInfo();
@@ -333,7 +335,7 @@
             var last_info = show_msg + " | " + new Date(tronWeb.toDecimal(output.last_buy_time) * 1000);
             $(".game .last-user").html(last_info);
             var price = math.chain(tronWeb.toDecimal(output.price)).divide(math.pow(10, 6));
-            $("div.btn span strong.btn_price").html(price + "RTX");
+            $("div.btn span strong.btn_price").html(price + "TRX");
 
             
 
