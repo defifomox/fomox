@@ -495,6 +495,7 @@ progress[value]::-ms-fill {
 
 /**大厅**/
 .hall{
+
 }
 .hall div.header{
 	display: flex;
@@ -514,6 +515,16 @@ progress[value]::-ms-fill {
 	float: left;
 	margin-left: 20px;
 }
+.hall .header .left a{
+	color: #fff;
+	text-decoration: none;
+}
+.hall .title a{
+	color: #f60;
+	text-decoration: none;
+}
+
+
 
 .hall .header .left img{
 	display: inline-block;
@@ -755,7 +766,8 @@ progress[value]::-ms-fill {
 
 
 
-/**游戏展示*/
+
+	/**游戏展示*/
 .game{
 	border-radius: 10px;
 	background: #fff;
@@ -766,6 +778,30 @@ progress[value]::-ms-fill {
 	box-shadow: 0px 1px 5px 1px #ffdbc4;
 	position: relative;
 }
+.report{
+	width: 94vw !important;
+}
+/*
+@media (max-width: 1023px) {
+
+	.game{
+		border-radius: 10px;
+		background: #fff;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 94vw;
+		margin-left: 3vw;
+		box-shadow: 0px 1px 5px 1px #ffdbc4;
+		position: relative;
+	}
+	.report{
+		width: 94vw !important;
+	}
+}
+
+*/
+
+
 
 .game-end{
 	box-shadow: 0px 1px 5px 1px #999;

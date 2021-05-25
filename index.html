@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
-    <title>DeFi FomoX</title>
+    <title>里拉斜塔--LeeLa</title>
 
     <link href="./assets/css/iconfont.css" rel="stylesheet" type="text/css" />
     <link href="./assets/css/skin.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@
 
 
             <!--个人信息-->
-            <div class="user-info">
+            <div class="user-info report">
                 <div class="title">
                     <img src="./assets/images/title-icon.png" />
                     <span>个人收益</span>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="pie-box">
                     <div class="left">
-                        <img src="./assets/images/c.png" />
+                        <img src="./assets/images/charts.png" />
                     </div>
                     <div class="right">
                         规则:每次认购金额递增1%。认购金额分配: 30%进入大奖池,45%给之前购买的玩家分红,10%给推荐人,10%平台收取,每次有人接龙认购,倒计时重新开始,倒计时完成后最后购买者独得奖池!
@@ -145,7 +145,7 @@
                 <div class="notice-box-content-tit">公 告</div>
                 <div class="notice-box-content-box">
                     <p>
-                        请注意，本平台依托于<a href="https://tron.network/" target="_blank">Tron(波场)</a>，只要购买即可后续持续获得收益。<br />
+                        请注意，里拉斜塔(LeeLa)依托于<a href="https://tron.network/" target="_blank">Tron(波场)</a>，只要购买即可后续持续获得收益。<br />
                         在这里，呈现在眼前的，是一个去中心化，依托Tron(波场)智能合约的分布式应用。在阳光下，一切交易行为均有据可查。<br />
                         <a id="notice_contract_address" href="#" target="_blank" style="text-decoration: underline">波场合约地址</a><br />
                         推荐朋友来投资，可获得这笔投资额外的收益分成。
@@ -314,8 +314,8 @@
             var current_time = (new Date()).getTime();
 
             var left_seconds = parseInt(math.chain(over_time).subtract(current_time).divide(1000).done());
-            $(".game .progress progress").attr("value", left_seconds);
-            $(".game .progress progress").attr("max", game_times);
+            $(".game .progress progress").attr("value", parseInt(current_time));
+            $(".game .progress progress").attr("max", parseInt(over_time));
             $(".game .progress span").html((left_seconds * 100 / game_times).toFixed(2) + "%");
 
             $(".game .game_timer").timeTo({
