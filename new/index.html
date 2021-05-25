@@ -194,7 +194,7 @@
         <!--我的信息-->
 
         <section class="space token-sale-details token-sale-details--v1 section--darkblue bg-gradient--darkblue--3"
-            id="token-sale-details">
+            id="my_report">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-10 col-md-8 mx-auto">
@@ -500,29 +500,26 @@
                     <div class="col-12 col-lg-6 col-xl-7 mx-auto mx-md-0 remove-space--bottom">
                         <div class="mb-5 mb-lg-7 text-center text-md-left reveal">
                             <h2 class="h3-font font-w--600 mb-2">LeeLa币</h2>
-                            <p class="h6-font">Total amount of INT released is 1,000,000,000. No additional token
-                                releases will take place. If all INT available for sale are not purchased, the remaining
-                                tokens are destroyed. Token distribution takes place 10 days after the token sale is
-                                complete.</p>
+                            <p class="h6-font">里拉斜塔 LeeLa 是基于波场(Tron)发行的ERC20数字货币，依托于本游戏收取的游戏手续费。</p>
                         </div>
                         <div class="d-flex flex-row mb-2 reveal">
                             <div class="card bg-color--blue-opacity--15 border--none p-2 p-md-4 mr-2 w-100">
-                                <span class="body-font font-w--600 mb-1">Token Symbol</span>
-                                <span class="color--primary h4-font font-w--700">INT</span>
+                                <span class="body-font font-w--600 mb-1">符号</span>
+                                <span class="color--primary h4-font font-w--700">LeeLa</span>
                             </div>
                             <div class="card bg-color--blue-opacity--15 border--none p-2 p-md-4 w-100">
-                                <span class="body-font font-w--600 mb-1">Blockchain</span>
-                                <span class="color--primary h4-font font-w--700">Ethereum, ERC20</span>
+                                <span class="body-font font-w--600 mb-1">块链</span>
+                                <span class="color--primary h4-font font-w--700">波场(Tron), ERC20</span>
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-2 reveal">
                             <div class="card bg-color--blue-opacity--15 border--none p-2 p-md-4 mr-2 w-100">
-                                <span class="body-font font-w--600 mb-1">Token Price</span>
-                                <span class="color--primary h4-font font-w--700">0,0014571 ETH</span>
+                                <span class="body-font font-w--600 mb-1">小数位</span>
+                                <span class="color--primary h4-font font-w--700">6</span>
                             </div>
                             <div class="card bg-color--blue-opacity--15 border--none p-2 p-md-4 w-100">
-                                <span class="body-font font-w--600 mb-1">Total Token Supply</span>
-                                <span class="color--primary h4-font font-w--700">1,000,000,000 INT</span>
+                                <span class="body-font font-w--600 mb-1">总发行量</span>
+                                <span class="color--primary h4-font font-w--700">1,000,000,000 LeeLa</span>
                             </div>
                         </div>
                     </div>
@@ -534,35 +531,21 @@
                                     conversions from popular crypto currencies.</span>
                             </div>
                             <div class="d-flex align-items-center flex-wrap">
-                                <button
-                                    class="token-calculator__coin token-calculator__coin--is-active d-flex align-items-center rounded--05">
-                                    <img src="img/icon-eth.svg" alt="coin-icon" class="svg" /> <span
-                                        class="coin-name font-w--600 color--white ml-1" data-coin="eth">Ethereum</span>
-                                </button>
-                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img
-                                        src="img/icon-btc.svg" alt="coin-icon" class="svg" /> <span
-                                        class="coin-name font-w--600 color--white ml-1" data-coin="btc">Bitcoin</span>
-                                </button>
-                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img
-                                        src="img/icon-bch.svg" alt="coin-icon" class="svg" /> <span
-                                        class="coin-name font-w--600 color--white ml-1" data-coin="bch">Bitcoin
-                                        Cash</span> </button>
-                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img
-                                        src="img/icon-ltc.svg" alt="coin-icon" class="svg" /> <span
-                                        class="coin-name font-w--600 color--white ml-1" data-coin="ltc">Litcoin</span>
-                                </button>
+                                <button class="token-calculator__coin token-calculator__coin--is-active d-flex align-items-center rounded--05"> <img src="img/icon-eth.svg" alt="coin-icon" class="svg" /> <span class="coin-name font-w--600 color--white ml-1" data-coin="eth">以太坊</span> </button>
+                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img src="img/icon-btc.svg" alt="coin-icon" class="svg" /> <span class="coin-name font-w--600 color--white ml-1" data-coin="btc">比特币</span> </button>
+                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img src="img/icon-bch.svg" alt="coin-icon" class="svg" /> <span class="coin-name font-w--600 color--white ml-1" data-coin="bch">比特币现金</span> </button>
+                                <button class="token-calculator__coin d-flex align-items-center rounded--05"> <img src="img/icon-ltc.svg" alt="coin-icon" class="svg" /> <span class="coin-name font-w--600 color--white ml-1" data-coin="ltc">莱特币</span> </button>
                             </div>
                             <div class="token-calculator-fields bg-color--blue-opacity--15 rounded--05 mt-3">
-                                <div class="input-field-row input-field-row--src">
-                                    <input type="number" value="" placeholder="100000"
-                                        class="currency-input--src body-font font-w--600" />
-                                    <span class="currency-name body-font font-w--600 text-uppercase">INT</span>
-                                </div>
-                                <div class="input-field-row pb-0">
-                                    <input type="number" readonly="" value="2.58893432"
-                                        class="currency-input body-font font-w--600" />
-                                    <span
-                                        class="currency-name currency-name--target body-font font-w--600 text-uppercase">ETH</span>
+                                <div class="token-calculator-fields bg-color--blue-opacity--15 rounded--05 mt-3">
+                                    <div class="input-field-row pb-0">
+                                        <input type="text" readonly="" value="我的持有" class="currency-input body-font font-w--600" />
+                                 
+                                    </div>
+                                    <div class="input-field-row pb-0">
+                                        <input type="number" readonly="" value="2.58893432" class="currency-input body-font font-w--600" />
+                                        <span class="currency-name currency-name--target body-font font-w--600 text-uppercase">LeeLa</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -664,8 +647,8 @@
                                 <li><a href="#" class="color--primary"><i class="fab fa-bitcoin"></i></a></li>
                                 <li><a href="#" class="color--primary"><i class="fab fa-youtube"></i></a></li>
                             </ul>
-                            <p class="text-color--500 font-size--14">&copy; 2019 <a href="#"
-                                    class="text-color--500">SpaceMax</a>. All Rights Reserved.</p>
+                            <p class="text-color--500 font-size--14">&copy; 2021 <a href="#"
+                                    class="text-color--500">LeeLa</a>. All Rights Reserved.</p>
                         </div>
                     </div>
                 </div>
